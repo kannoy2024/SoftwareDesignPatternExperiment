@@ -25,7 +25,7 @@ public class DatabaseTest {
             );
 
             // 2. 初始化测试表
-            initializeTables(connection);
+            // initializeTables(connection);
 
             // 3. 获取操作实例
             IUserOperator userOperator = factory.createUserManageEntity(connection);
@@ -58,7 +58,7 @@ public class DatabaseTest {
             );
 
             // 2. 初始化测试表
-            initializeTables(connection);
+            // initializeTables(connection);
 
             // 3. 获取操作实例
             IUserOperator userOperator = factory.createUserManageEntity(connection);
@@ -79,12 +79,7 @@ public class DatabaseTest {
 
     private static void initializeTables(Connection conn) throws SQLException {
         try (Statement stmt = conn.createStatement()) {
-            // 先删除User表
-            stmt.execute("DROP TABLE IF EXISTS User");
-
-            // 再删除Department表
-            stmt.execute("DROP TABLE IF EXISTS Department");
-
+           
             // 创建Department表
             stmt.execute("CREATE TABLE Department (" +
                 "id INT AUTO_INCREMENT PRIMARY KEY, " +
@@ -118,22 +113,23 @@ public class DatabaseTest {
         User user = new User(1, "张三", 25, 1, "技术部", "一班", "北京市", "男");
         System.out.println("插入用户: " + user);
         userOperator.insert(user);
+        System.out.println("插入测试成功##########");
 
         // 2. 测试查询
         User queriedUser = userOperator.getUserByID(1);
         System.out.println("查询结果: " + queriedUser);
-
+        System.out.println("查询测试成功##########");
         // 3. 测试更新
         queriedUser.setStudentName("张三丰");
         queriedUser.setStudentAge(30);
         System.out.println("更新用户: " + queriedUser);
         userOperator.update(queriedUser);
         System.out.println("更新后查询: " + userOperator.getUserByID(1));
-
+        System.out.println("更新测试成功##########");
         // 4. 测试删除
-        // System.out.println("删除用户ID=1");
-        // userOperator.delete(queriedUser);
-        // System.out.println("删除后查询: " + userOperator.getUserByID(1));
+        System.out.println("删除用户ID=1");
+        userOperator.delete(queriedUser);
+        System.out.println("删除后查询: " + userOperator.getUserByID(1));
 
         System.out.println("===student表测试结束");
     }
@@ -146,6 +142,7 @@ public class DatabaseTest {
         System.out.println("插入部门: " + dept);
         Integer deptId = deptOperator.insert(dept);
         System.out.println("生成的部门ID: " + deptId);
+        
 
         // 2. 测试查询
         Department queriedDept = deptOperator.getDepartmentByID(deptId.toString());

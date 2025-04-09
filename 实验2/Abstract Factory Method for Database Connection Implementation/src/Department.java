@@ -97,6 +97,9 @@ public class Department {
 
     @Override
     public String toString() {
-        return "Department [id=" + id + ", name=" + name + ", code=" + code + ", manager_id=" + manager_id + ", description=" + description + ", status=" + status + ", location=" + location + ", phone=" + phone + ", email=" + email + "]";
+        return "Department [id=" + id + ", name=" + name + ", code=" + code + 
+        ", manager_id=" + manager_id + ", description=" + description + 
+        ", status=" + status + ", location=" + location + ", phone=" + phone + 
+        ", email=" + email + "]";
     }
 }

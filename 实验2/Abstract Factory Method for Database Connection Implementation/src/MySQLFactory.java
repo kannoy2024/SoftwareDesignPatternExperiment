@@ -9,7 +9,7 @@ public class MySQLFactory implements IFactory{
     public Connection getConnection(String driver, String url, String username, String password){
         if (connection == null) {
                 try {
-                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    Class.forName(driver);
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
