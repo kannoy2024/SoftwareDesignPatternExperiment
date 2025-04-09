@@ -4,60 +4,60 @@ import java.sql.Statement;
 public class DatabaseTest {
     public static void main(String[] args) {
         // 测试SQLite数据库
-        testSQLiteDatabase();
+        testMySQLDatabase();
         
         // 测试MariaDB数据库
-        testMariaDBDatabase();
+        // testMariaDBDatabase();
     }
 
-    private static void testSQLiteDatabase() {
-        System.out.println("===== SQLite 数据库测试开始 =====");
+    private static void testMySQLDatabase() {
+        System.out.println("===== MySQL 数据库测试开始 =====");
         Connection connection = null;
         try {
-            // 1. 初始化SQLite连接
-            SQLiteFactory factory = new SQLiteFactory();
+            // 1. 初始化MySQL连接
+            MySQLFactory factory = new MySQLFactory();
             connection = factory.getConnection(
-                "org.sqlite.JDBC",
-                "jdbc:sqlite:infod.db",
-                "",
-                ""
+                "com.mysql.cj.jdbc.Driver",
+                "jdbc:mysql://localhost:3306/student",
+                "root",
+                "123456"
             );
-
+    
             // 2. 初始化测试表
-            // initializeTables(connection);
-
+            initializeTables(connection);
+    
             // 3. 获取操作实例
             IUserOperator userOperator = factory.createUserManageEntity(connection);
             IDepartmentOperator deptOperator = factory.createDepartmentManageEntity(connection);
-
+    
             // 4. 执行测试
-            testUserOperations(userOperator);
             testDepartmentOperations(deptOperator);
-
-            System.out.println("===== SQLite 数据库测试成功 =====");
+            testUserOperations(userOperator);
+           
+    
+            System.out.println("===== MySQL 数据库测试成功 =====");
         } catch (Exception e) {
-            System.err.println("SQLite测试失败: " + e.getMessage());
+            System.err.println("MySQL测试失败: " + e.getMessage());
             e.printStackTrace();
         } finally {
             closeConnection(connection);
         }
     }
-
-    private static void testMariaDBDatabase() {
-        System.out.println("\n===== MariaDB 数据库测试开始 =====");
-        Connection connection = null;
-        try {
-            // 1. 初始化MariaDB连接
-            MariaDBFactory factory = new MariaDBFactory();
-            connection = factory.getConnection(
-                "org.mariadb.jdbc.Driver",
-                "jdbc:mariadb://localhost:3306/mydb",
-                "pmauser",
-                "yzhi0788"
-            );
-            //MySQL和MariadDB建表的SQL语句。
-            // // 2. 初始化测试表
-            // initializeTables(connection);
+    // private static void testMariaDBDatabase() {
+    //     System.out.println("\n===== MariaDB 数据库测试开始 =====");
+    //     Connection connection = null;
+    //     try {
+    //         // 1. 初始化MariaDB连接
+    //         MariaDBFactory factory = new MariaDBFactory();
+    //         connection = factory.getConnection(
+    //             "org.mariadb.jdbc.Driver",
+    //             "jdbc:mariadb://localhost:3306/mydb",
+    //             "pmauser",
+    //             "yzhi0788"
+    //         );
+    //         //MySQL和MariadDB建表的SQL语句。
+    //         // // 2. 初始化测试表
+    //         // initializeTables(connection);
             // -- mydb.Department definition
 
             // CREATE TABLE `Department` (
@@ -90,49 +90,53 @@ public class DatabaseTest {
             //   KEY `dept_id` (`dept_id`)
             // ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
             // 3. 获取操作实例
-            IUserOperator userOperator = factory.createUserManageEntity(connection);
-            IDepartmentOperator deptOperator = factory.createDepartmentManageEntity(connection);
+    //         IUserOperator userOperator = factory.createUserManageEntity(connection);
+    //         IDepartmentOperator deptOperator = factory.createDepartmentManageEntity(connection);
 
-            // 4. 执行测试
-            testUserOperations(userOperator);
-            testDepartmentOperations(deptOperator);
+    //         // 4. 执行测试
+    //         testUserOperations(userOperator);
+    //         testDepartmentOperations(deptOperator);
 
-            System.out.println("===== MariaDB 数据库测试成功 =====");
-        } catch (Exception e) {
-            System.err.println("MariaDB测试失败: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
-            closeConnection(connection);
-        }
-    }
+    //         System.out.println("===== MariaDB 数据库测试成功 =====");
+    //     } catch (Exception e) {
+    //         System.err.println("MariaDB测试失败: " + e.getMessage());
+    //         e.printStackTrace();
+    //     } finally {
+    //         closeConnection(connection);
+    //     }
+    // }
 
     private static void initializeTables(Connection conn) throws SQLException {
         try (Statement stmt = conn.createStatement()) {
-            // 创建Department表
+            // 先删除User表
+            stmt.execute("DROP TABLE IF EXISTS User");
+    
+            // 再删除Department表
             stmt.execute("DROP TABLE IF EXISTS Department");
+    
+            // 创建Department表
             stmt.execute("CREATE TABLE Department (" +
-                "id INTEGER PRIMARY KEY AUTO_INCREMENT, " +
+                "id INT AUTO_INCREMENT PRIMARY KEY, " +
                 "name VARCHAR(50) NOT NULL, " +
                 "code VARCHAR(20), " +
-                "manager_id INTEGER, " +
+                "manager_id INT, " +
                 "description TEXT, " +
-                "status INTEGER, " +
+                "status INT, " +
                 "location VARCHAR(100), " +
                 "phone VARCHAR(20), " +
                 "email VARCHAR(50))");
-
+    
             // 创建User表
-            stmt.execute("DROP TABLE IF EXISTS User");
             stmt.execute("CREATE TABLE User (" +
-                "id INTEGER PRIMARY KEY, " +
-                "name VARCHAR(50) NOT NULL, " +
-                "sage INTEGER, " +
-                "dept_id INTEGER, " +
+                "studentID INT AUTO_INCREMENT PRIMARY KEY, " +
+                "studentName VARCHAR(50) NOT NULL, " +
+                "studentAge INT, " +
+                "deptID INT, " +
                 "dept VARCHAR(50), " +
-                "sclass VARCHAR(50), " +
-                "saddr VARCHAR(100), " +
-                "sgender VARCHAR(10), " +
-                "FOREIGN KEY (dept_id) REFERENCES Department(id))");
+                "studentClass VARCHAR(50), " +
+                "studentAddr VARCHAR(100), " +
+                "studentGender VARCHAR(10), " +
+                "FOREIGN KEY (deptID) REFERENCES Department(id))");
         }
     }
 
@@ -149,8 +153,8 @@ public class DatabaseTest {
         System.out.println("查询结果: " + queriedUser);
         
         // 3. 测试更新
-        queriedUser.setName("张三丰");
-        queriedUser.setSage(30);
+        queriedUser.setStudentName("张三丰");
+        queriedUser.setStudentAge(30);
         System.out.println("更新用户: " + queriedUser);
         userOperator.update(queriedUser);
         System.out.println("更新后查询: " + userOperator.getUserByID(1));

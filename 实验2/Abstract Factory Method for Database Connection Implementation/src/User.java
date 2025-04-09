@@ -1,77 +1,92 @@
 public class User {
-    private Integer id;
-    private String name;
-    private Integer sage;
-    private Integer dept_id;
+    private int studentID;
+    private String studentName;
+    private int studentAge;
+    private int deptID;
     private String dept;
-    private String sclass;
-    private String saddr;
-    private String sgender;
-    public Integer getId() {
-        return id;
+    private String studentClass;
+    private String studentAddr;
+    private String studentGender;
+
+    // 构造函数、getter 和 setter 方法
+    public User(int studentID, String studentName, int studentAge, int deptID, String dept, String studentClass, String studentAddr, String studentGender) {
+        this.studentID = studentID;
+        this.studentName = studentName;
+        this.studentAge = studentAge;
+        this.deptID = deptID;
+        this.dept = dept;
+        this.studentClass = studentClass;
+        this.studentAddr = studentAddr;
+        this.studentGender = studentGender;
     }
-    public void setId(Integer id) {
-        this.id = id;
+
+    // getter 和 setter 方法
+    public int getStudentID() {
+        return studentID;
     }
-    public String getName() {
-        return name;
+
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
     }
-    public void setName(String name) {
-        this.name = name;
+
+    public String getStudentName() {
+        return studentName;
     }
-    public Integer getSage() {
-        return sage;
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
-    public void setSage(Integer sage) {
-        this.sage = sage;
+
+    public int getStudentAge() {
+        return studentAge;
     }
-    public Integer getDept_id() {
-        return dept_id;
+
+    public void setStudentAge(int studentAge) {
+        this.studentAge = studentAge;
     }
-    public void setDept_id(Integer dept_id) {
-        this.dept_id = dept_id;
+
+    public int getDeptID() {
+        return deptID;
     }
+
+    public void setDeptID(int deptID) {
+        this.deptID = deptID;
+    }
+
     public String getDept() {
         return dept;
     }
+
     public void setDept(String dept) {
         this.dept = dept;
     }
-    public String getSclass() {
-        return sclass;
+
+    public String getStudentClass() {
+        return studentClass;
     }
-    public void setSclass(String sclass) {
-        this.sclass = sclass;
+
+    public void setStudentClass(String studentClass) {
+        this.studentClass = studentClass;
     }
-    public String getSaddr() {
-        return saddr;
+
+    public String getStudentAddr() {
+        return studentAddr;
     }
-    public void setSaddr(String saddr) {
-        this.saddr = saddr;
+
+    public void setStudentAddr(String studentAddr) {
+        this.studentAddr = studentAddr;
     }
-    public String getSgender() {
-        return sgender;
+
+    public String getStudentGender() {
+        return studentGender;
     }
-    public void setSgender(String sgender) {
-        this.sgender = sgender;
+
+    public void setStudentGender(String studentGender) {
+        this.studentGender = studentGender;
     }
-    public User() {
-    }
-    public User(Integer id, String name, Integer sage, Integer dept_id, String dept, String sclass, String saddr,
-            String sgender) {
-        this.id = id;
-        this.name = name;
-        this.sage = sage;
-        this.dept_id = dept_id;
-        this.dept = dept;
-        this.sclass = sclass;
-        this.saddr = saddr;
-        this.sgender = sgender;
-    }
+
     @Override
     public String toString() {
-        return "User [id=" + id + ", name=" + name + ", sage=" + sage + ", dept_id=" + dept_id + ", dept=" + dept
-                + ", sclass=" + sclass + ", saddr=" + saddr + ", sgender=" + sgender + "]";
+        return "User [studentID=" + studentID + ", studentName=" + studentName + ", studentAge=" + studentAge + ", deptID=" + deptID + ", dept=" + dept + ", studentClass=" + studentClass + ", studentAddr=" + studentAddr + ", studentGender=" + studentGender + "]";
     }
-    
 }
