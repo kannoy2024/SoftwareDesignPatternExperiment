@@ -13,9 +13,9 @@ public class AdapterTestGUI extends JPanel{
    private JPanel UIPanel;
    private JTextArea dataTextArea;
    private JTextField txtCustomerName, txtAddress,
-           txtZip,txtCellPhone, txtSSN;
+           txtZip,txtCellPhone, txtSSN , txtEmailAddr;
    private JLabel lblCustomerName, lblAddress,
-           lblZip, lblCellphone, lblSSN;
+           lblZip, lblCellphone, lblSSN , lblEmailAddr;
    public static final String VALIDATE = "Validate";
    public static final String EXIT = "Exit";
 
@@ -50,12 +50,14 @@ public class AdapterTestGUI extends JPanel{
 	  txtZip = new JTextField(20);
 	  txtCellPhone = new JTextField(20);
 	  txtSSN = new JTextField(20);
+	  txtEmailAddr = new JTextField(20);
 
 	  lblCustomerName = new JLabel("Customer Name:");
 	  lblAddress = new JLabel("Address:");
 	  lblZip = new JLabel("Zip Code:");
 	  lblCellphone = new JLabel("Cellphone Num:");
 	  lblSSN = new JLabel("SSN :");
+	  lblEmailAddr = new JLabel("Email Address:");
 
 	  //Create the open button
 	  JButton validateButton = new JButton(VALIDATE);
@@ -82,6 +84,10 @@ public class AdapterTestGUI extends JPanel{
 	  UIPanel.add(txtCellPhone);
 	  UIPanel.add(lblSSN);
 	  UIPanel.add(txtSSN);
+
+	  UIPanel.add(lblEmailAddr);
+	  UIPanel.add(txtEmailAddr);
+
 	  UIPanel.add(validateButton);
 	  UIPanel.add(exitButton);
 
@@ -122,6 +128,13 @@ public class AdapterTestGUI extends JPanel{
 	  gbc.gridy = 4;
 	  gridbag.setConstraints(txtSSN, gbc);
 
+	  gbc.gridx = 0;
+	  gbc.gridy = 5;
+	  gridbag.setConstraints(lblEmailAddr, gbc);
+	  gbc.gridx = 1;
+	  gbc.gridy = 5;
+	  gridbag.setConstraints(txtEmailAddr, gbc);
+
 	  gbc.insets.left = 2;
 	  gbc.insets.right = 2;
 	  gbc.insets.top = 40;
@@ -151,6 +164,11 @@ public class AdapterTestGUI extends JPanel{
 		 return txtSSN.getText();
 	 }
 
+
+	 public String getEmailAddr(){
+		 return txtEmailAddr.getText();
+	 }
+
     class ButtonListener implements ActionListener{
        CusInfoValidator cusInfo = new InformationAdapter();
        public void actionPerformed(ActionEvent e){
@@ -164,6 +182,8 @@ public class AdapterTestGUI extends JPanel{
 			 String zip = getZipCode();
 			 String cellNum = getCellNum();
              String ssn = getSSNNum();
+			 String email = getEmailAddr();
+
 
              if(cusInfo.isValidName(name)==false){
 			    dataTextArea.append("\nWrong format of name.");
@@ -200,6 +220,14 @@ public class AdapterTestGUI extends JPanel{
 			 else{
 			    dataTextArea.append("\nCorrect format of SSN.");
 			 }
+
+			 if(cusInfo.isValidEmailAddr(email)==false){
+				dataTextArea.append("\nWrong format of email address.");
+			 }
+			 else{
+				dataTextArea.append("\nCorrect format of email address.");
+			 }
+			 
            }
         }
     } // End of class ButtonListener

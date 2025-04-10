@@ -11,5 +11,6 @@ public interface CusInfoValidator{
 	public abstract boolean isValidZipCode(String zipCode);
 	public abstract boolean isValidCellPhoneNum(String phoneNum);
 	public abstract boolean isValidSSNNum(String SSNNum);
+	public abstract boolean isValidEmailAddr(String emailAddr);
 }
 

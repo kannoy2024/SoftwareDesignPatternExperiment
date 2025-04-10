@@ -37,7 +37,27 @@ class InformationAdapter extends InfoValidation implements CusInfoValidator{
 
 
 
+	// public boolean isValidSSNNum(String SSNNum) {
+    //     if (SSNNum == null || SSNNum.isEmpty()) {
+    //         return false;
+    //     }
+    //     String regex = "^\\d{3}-\\d{2}-\\d{4}$";
+    //     return SSNNum.trim().matches(regex);
+    // }
+
+	public boolean isValidEmailAddr(String emailAddr) {
+        if (emailAddr == null || emailAddr.isEmpty() || emailAddr.length() < 5) {
+            return false;
+        }
+        String regex = "^[a-zA-Z][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        return emailAddr.trim().matches(regex);
+    }
+// example123@domain.com
 	
 }
-
+// 使用正则表达式 ^[a-zA-Z][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$ 验证电子邮件地址格式：
+// ^[a-zA-Z] 确保首字符是英文字母。
+// [a-zA-Z0-9._%+-]* 允许后续字符为字母、数字、下划线、点、百分号、加号或减号。
+// @[a-zA-Z0-9.-]+ 确保包含一个“@”符号，并且“@”后面至少有一个字符。
+// \\.[a-zA-Z]{2,}$ 确保至少有一个“.”，并且“.”后面至少有两个字母
 
