@@ -7,28 +7,28 @@ public class BusinessLaptopBuilder implements LaptopBuilder {
     }
 
     @Override
-    public void buildCpu(String cpu) {
-        laptop.setCpu(cpu);
+    public void buildCpu() {
+        laptop.setCpu("英特尔");
     }
 
     @Override
-    public void buildGpu(String gpu) {
-        laptop.setGpu(gpu);
+    public void buildGpu( ) {
+        laptop.setGpu("1060");
     }
 
     @Override
-    public void buildRam(String ram) {
-        laptop.setRam(ram);
+    public void buildRam( ) {
+        laptop.setRam("20G");
     }
 
     @Override
-    public void buildStorage(String storage) {
-        laptop.setStorage(storage);
+    public void buildStorage( ) {
+        laptop.setStorage("510G");
     }
 
     @Override
-    public void buildDisplay(String display) {
-        laptop.setDisplay(display);
+    public void buildDisplay( ) {
+        laptop.setDisplay("2k");
     }
 
     @Override

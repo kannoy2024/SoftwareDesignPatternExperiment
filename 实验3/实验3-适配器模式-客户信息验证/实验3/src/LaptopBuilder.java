@@ -1,8 +1,8 @@
-public interface LaptopBuilder {
-    void buildCpu(String cpu);
-    void buildGpu(String gpu);
-    void buildRam(String ram);
-    void buildStorage(String storage);
-    void buildDisplay(String display);
+public interface LaptopBuilder {//建造者的接口
+    void buildCpu();
+    void buildGpu( );
+    void buildRam( );
+    void buildStorage( );
+    void buildDisplay( );
     Laptop getLaptop();
 }

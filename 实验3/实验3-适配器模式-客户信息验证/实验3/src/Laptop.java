@@ -1,4 +1,4 @@
-public class Laptop {
+public class Laptop {//先写一个生成发的模版
     private String cpu;
     private String gpu;
     private String ram;//内存，随机存储器

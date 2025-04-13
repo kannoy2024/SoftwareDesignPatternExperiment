@@ -6,28 +6,28 @@ public class GamingLaptopBuilder implements LaptopBuilder {
     }
 
     @Override
-    public void buildCpu(String cpu) {
-        laptop.setCpu(cpu);
+    public void buildCpu( ) {
+        laptop.setCpu("AMD");
     }
 
     @Override
-    public void buildGpu(String gpu) {
-        laptop.setGpu(gpu);
+    public void buildGpu( ) {
+        laptop.setGpu("4060");
     }
 
     @Override
-    public void buildRam(String ram) {
-        laptop.setRam(ram);
+    public void buildRam( ) {
+        laptop.setRam("40g");
     }
 
     @Override
-    public void buildStorage(String storage) {
-        laptop.setStorage(storage);
+    public void buildStorage( ) {
+        laptop.setStorage("2T");
     }
 
     @Override
-    public void buildDisplay(String display) {
-        laptop.setDisplay(display);
+    public void buildDisplay( ) {
+        laptop.setDisplay("4K");
     }
 
     @Override
