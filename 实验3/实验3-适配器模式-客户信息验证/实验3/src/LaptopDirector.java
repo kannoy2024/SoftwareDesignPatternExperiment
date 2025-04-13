@@ -6,11 +6,11 @@ public class LaptopDirector {
     }
 
     public Laptop buildLaptop() {
-        laptopBuilder.buildCpu("Intel i7");
-        laptopBuilder.buildGpu("NVIDIA RTX 3060");
-        laptopBuilder.buildRam("16GB DDR4");
-        laptopBuilder.buildStorage("512GB SSD");
-        laptopBuilder.buildDisplay("15.6 inch Full HD");
+        laptopBuilder.buildCpu("Intel i7\n");
+        laptopBuilder.buildGpu("NVIDIA RTX 3060\n");
+        laptopBuilder.buildRam("16GB DDR4\n");
+        laptopBuilder.buildStorage("512GB SSD\n");
+        laptopBuilder.buildDisplay("15.6 inch Full HD\n");
         return laptopBuilder.getLaptop();
     }
 }
