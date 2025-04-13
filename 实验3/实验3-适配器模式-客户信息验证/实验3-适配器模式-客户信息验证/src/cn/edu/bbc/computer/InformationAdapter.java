@@ -52,7 +52,13 @@ class InformationAdapter extends InfoValidation implements CusInfoValidator{
     //     String regex = "^[a-zA-Z][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
     //     return emailAddr.trim().matches(regex);
     // }
+	
+	// emailAddr.trim()
+// 调用 trim() 方法去除字符串两端的空格，确保输入的电子邮件地址没有多余的空白字符。
+// .matches(regex)
 
+// 使用 matches() 方法将去除空格后的电子邮件地址与正则表达式 regex 进行匹配。
+// 如果电子邮件地址符合正则表达式的规则，则返回 true；否则返回 false。
 	public boolean isValidEmailAddr(String emailAddr) {
 		// 检查电子邮件地址是否为 null、空字符串或长度小于 5。
 		if (emailAddr == null || emailAddr.isEmpty() || emailAddr.length() < 5) {
