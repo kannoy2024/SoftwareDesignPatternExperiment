@@ -5,54 +5,58 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Tuition {
-	  private String firstName;
-	  private String lastName;
-	  private String studNum;
-	  private final String STUDENT_TUITION_FILE = "Tuition.txt";
-	  private ArrayList<String> studentTuition;
+	private String firstName;
+	private String lastName;
+	private String studNum;
+	private final String STUDENT_TUITION_FILE = "F:\\Java2025\\SoftwareDesignPatternExperiment\\实验4\\实验4-外观模式-毕业生信息\\实验4-外观模式-毕业生信息\\Tuition.txt";
 
-	 //constructor
-	  public Tuition(String fname, String lname, String stuNum) {
+
+	private ArrayList<String> studentTuition = new ArrayList<>();
+	// private
+
+	// constructor
+	public Tuition(String fname, String lname, String stuNum) {
 		firstName = fname;
 		lastName = lname;
 		studNum = stuNum;
-	  }
+	}
 
- //Get tuition information paid by students
- public ArrayList<String> getStudentTuitionInfo(){
-			studentTuition = new ArrayList();
-			try {
-			   BufferedReader reader = new BufferedReader(new FileReader(STUDENT_TUITION_FILE));
-			   String line = reader.readLine();
-			   while(line != null) {
+	// Get tuition information paid by students
+	public ArrayList<String> getStudentTuitionInfo() {
+		studentTuition = new ArrayList<>();
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(STUDENT_TUITION_FILE));
+			String line = reader.readLine();
+			while (line != null) {
 				if (line.length() != 0) {
-				  String[] arr = line.split("\\,");
+					String[] arr = line.split("\\,");
 
-				  if( arr[0].trim().equals(firstName) && arr[1].trim().equals(lastName)&& arr[2].trim().equals(studNum)   )
-					  studentTuition.add(line);
+					if (arr[0].trim().equals(firstName) && arr[1].trim().equals(lastName)
+							&& arr[2].trim().equals(studNum))
+						studentTuition.add(line);
 				}
 				line = reader.readLine();
-				}
-			 }
-			 catch(FileNotFoundException exc){
-				exc.printStackTrace();
-				System.exit(1);
-			 }
-			 catch(IOException exc){
-				exc.printStackTrace();
-				System.exit(1);
-			 }
-			 return  studentTuition;
-		 }
+			}
+			reader.close();
+		} catch (FileNotFoundException exc) {
+			exc.printStackTrace();
+			System.exit(1);
+		} catch (IOException exc) {
+			exc.printStackTrace();
+			System.exit(1);
+		}
+		return studentTuition;
+	}
 
-	  public String getFirstName() {
+	public String getFirstName() {
 		return firstName;
-	  }
-	  public String getLastName() {
-		return lastName;
-	  }
-	  public String getStudNumber() {
-		  return studNum;
-	  }
-}
+	}
 
+	public String getLastName() {
+		return lastName;
+	}
+
+	public String getStudNumber() {
+		return studNum;
+	}
+}

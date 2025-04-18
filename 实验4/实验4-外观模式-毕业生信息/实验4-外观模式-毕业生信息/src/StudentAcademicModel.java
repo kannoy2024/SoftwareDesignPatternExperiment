@@ -17,32 +17,37 @@ public class StudentAcademicModel {
    private String courseNum;
    private String score;
 
-   public StudentAcademicModel (String studFirstName, String studLastName, String studSerialNum,
-                                                      String courseTitle, String courseNum, String score) {
+   public StudentAcademicModel(String studFirstName, String studLastName, String studSerialNum,
+         String courseTitle, String courseNum, String score) {
       this.studFirstName = studFirstName;
       this.studLastName = studLastName;
       this.studSerialNum = studSerialNum;
       this.courseTitle = courseTitle;
       this.courseNum = courseNum;
-      this.score=score;
+      this.score = score;
    }
 
    public String getStudFirstName() {
       return studFirstName;
    }
+
    public String getStudLastName() {
       return studLastName;
    }
+
    public String getStudSerialNum() {
       return studSerialNum;
    }
+
    public String getCourseTitle() {
       return courseTitle;
    }
+
    public String getCourseNum() {
-         return courseNum;
+      return courseNum;
    }
+
    public String getScore() {
-            return score;
+      return score;
    }
 }

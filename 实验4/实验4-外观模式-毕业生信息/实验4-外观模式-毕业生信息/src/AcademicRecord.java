@@ -5,65 +5,66 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class AcademicRecord {
-  private String firstName;
-  private String lastName;
-  private String studNum;
-  //private String courseName;
-  //private String courseNumber;
-  //private String courseScore;
-  private String aFile;
+    private String firstName;
+    private String lastName;
+    private String studNum;
+    private String aFile;
 
-  private ArrayList<StudentAcademicModel> allScores;
+    // 使用泛型指定集合类型
+    private ArrayList<StudentAcademicModel> allScores = new ArrayList<>();
 
-  //constructor
-  public AcademicRecord(String firstName, String lastName, String studNum ) {
-      this.firstName = firstName;
-      this.lastName = lastName;
-      this.studNum = studNum;
-  }
+    // 构造方法
+    public AcademicRecord(String firstName, String lastName, String studNum) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.studNum = studNum;
+    }
 
-  //Get basic student academic information from a text file that is
-  //passed in from the parameter
-  public ArrayList<StudentAcademicModel> getAllScores(String file){
+    // 从文件中获取所有成绩信息
+    public ArrayList<StudentAcademicModel> getAllScores(String file) {
         aFile = file;
-        allScores = new ArrayList();
-        try {
-           BufferedReader reader = new BufferedReader(new FileReader(aFile));
-           String line = reader.readLine();
-           while(line != null) {
-  			if (line.length() != 0) {
-  		      String[] arr = line.split("\\,");
-  	          StudentAcademicModel sdam = new StudentAcademicModel (arr[0].trim(), arr[1].trim(),
-  	                                                                                                                               arr[2].trim(), arr[3].trim(),
-  	                                                                                                                               arr[4].trim(), arr[5].trim());
-  	          if( sdam.getStudFirstName().equals(firstName) &&
-  	              sdam.getStudLastName().equals(lastName) &&
-  	              sdam.getStudSerialNum().equals(studNum) )
-
-  			      allScores.add(sdam);
-  			}
-  			line = reader.readLine();
+        try (BufferedReader reader = new BufferedReader(new FileReader(aFile))) { // 使用try-with-resources自动关闭资源
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.trim().length() > 0) { // 检查非空行
+                    String[] arr = line.split(",");
+                    if (arr.length == 6) { // 确保数组长度正确
+                        StudentAcademicModel studentAcademicModel = new StudentAcademicModel(
+                            arr[0].trim(), arr[1].trim(), arr[2].trim(),
+                            arr[3].trim(), arr[4].trim(), arr[5].trim()
+                        );
+                        if (studentAcademicModel.getStudFirstName().equals(firstName) &&
+                            studentAcademicModel.getStudLastName().equals(lastName) &&
+                            studentAcademicModel.getStudSerialNum().equals(studNum)) {
+                            allScores.add(studentAcademicModel);
+                        }
+                    } else {
+                        System.err.println("Invalid line format: " + line);
+                    }
+                }
             }
-         }
-         catch(FileNotFoundException exc){
+        } catch (FileNotFoundException exc) {
+            System.err.println("File not found: " + aFile);
             exc.printStackTrace();
             System.exit(1);
-         }
-         catch(IOException exc){
+        } catch (IOException exc) {
+            System.err.println("Error reading file: " + aFile);
             exc.printStackTrace();
             System.exit(1);
-         }
-         return allScores;
-     }
+        }
+        return allScores;
+    }
 
-  public String getFirstName() {
-    return firstName;
-  }
-  public String getLastName() {
-    return lastName;
-  }
-  public String getStudNumber() {
-      return studNum;
-  }
+    // Getter方法
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getStudNumber() {
+        return studNum;
+    }
 }
-

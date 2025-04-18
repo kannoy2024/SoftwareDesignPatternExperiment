@@ -9,7 +9,7 @@
 //       score;
 //=====================================================
 
-public class StudentBasicInfoModel{
+public class StudentBasicInfoModel {
    private String name;
    private String birthDate;
    private String serialNumber;
@@ -18,7 +18,7 @@ public class StudentBasicInfoModel{
    private String degree;
 
    public StudentBasicInfoModel(String name, String birthDate, String serialNumber,
-                                 String ssNumber, String major, String degree) {
+         String ssNumber, String major, String degree) {
       this.name = name;
       this.birthDate = birthDate;
       this.serialNumber = serialNumber;
@@ -30,19 +30,24 @@ public class StudentBasicInfoModel{
    public String getName() {
       return name;
    }
+
    public String getBirthDate() {
       return birthDate;
    }
+
    public String getSerialNum() {
       return serialNumber;
    }
+
    public String getSocialSecurityNum() {
       return ssNumber;
    }
+
    public String getMajor() {
-         return major;
+      return major;
    }
+
    public String getDegree() {
-            return degree;
+      return degree;
    }
 }
