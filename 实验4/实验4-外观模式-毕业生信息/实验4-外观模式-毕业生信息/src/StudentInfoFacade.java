@@ -33,8 +33,12 @@ public class StudentInfoFacade {
     String info = extractStudentInfo();
     String record = extractAcademicRecord();
     String awards = extractAllAwards();
+    // String tuitionInfo = extractTuitionInfo();
+    String tuitionInfoByModel = extractTuitionInfoByModel();
 
-    allInfo = "\nBasic Student Info: \n" + info + "\nAcademic record: \n" + record + "\nAwards: \n" + awards;
+    allInfo = "\nBasic Student Info: \n" + info + "\nAcademic record: \n" + record + "\nAwards: \n" + awards
+        // + "\nTuition Info: \n" + tuitionInfo 
+        + "\nTuition Info by Model: \n" + tuitionInfoByModel;
     return allInfo;
   }
 
@@ -56,7 +60,8 @@ public class StudentInfoFacade {
       String mj = infoModel.getMajor().trim();
       String degree = infoModel.getDegree().trim();
 
-      allInfo = allInfo + " " + nm + " " + birth + " " + studNum + " " + ssn + " " + mj + " " + degree + "\n";
+      allInfo = allInfo + " " + nm + " " + birth + " " + studNum + " "
+       + ssn + " " + mj + " " + degree + "\n";
     }
     return allInfo;
   }
@@ -74,12 +79,12 @@ public class StudentInfoFacade {
       String name = recordModel.getStudFirstName().trim();
       String birth = recordModel.getStudLastName().trim();
       String studNum = recordModel.getStudSerialNum().trim();
-
       String coarseName = recordModel.getCourseTitle().trim();
       String courseNo = recordModel.getCourseNum().trim();
       String score = recordModel.getScore().trim();
 
-      allInfo = allInfo + " " + name + " " + birth + " " + studNum + " " + coarseName + " " + courseNo + " " + score
+      allInfo = allInfo + " " + name + " " + birth + " " + studNum + " " 
+      + coarseName + " " + courseNo + " " + score
           + "\n";
     }
     return allInfo;
@@ -99,23 +104,43 @@ public class StudentInfoFacade {
       String lastNm = awardModel.getStudLastName().trim();
       String studNum = awardModel.getStudSerialNum().trim();
       String awardName = awardModel.getAwardName().trim();
-      String awadDate = awardModel.getAwardDate().trim();
+      String awardDate = awardModel.getAwardDate().trim();
 
-      allInfo = allInfo + " " + firstNm + " " + lastNm + " " + studNum + " " + awardName + " " + awadDate + "\n";
+      allInfo = allInfo + " " + firstNm + " " + lastNm + " " + 
+      studNum + " " + awardName + " " + awardDate + "\n";
     }
     return allInfo;
   }
 
   // Students are supposed to finish this homework
-  public String extractTuitionInfo() {
+  // public String extractTuitionInfo() {
+  //   String allInfo = " ";
+  //   tuition = new Tuition(firstName, lastName, studentNum);
+  //   ArrayList<String> tuitionInfo = tuition.getStudentTuitionInfo();
+  //   Iterator<String> tuitionIterator = tuitionInfo.iterator();
+  //   while (tuitionIterator.hasNext()) {
+  //     String line = (String) tuitionIterator.next();
+  //     line = line.replace("\\,", " ");
+  //     allInfo = allInfo + line + "\n";
+  //   }
+  //   return allInfo;
+  // }
+
+  public String extractTuitionInfoByModel() {
     String allInfo = " ";
     tuition = new Tuition(firstName, lastName, studentNum);
-    ArrayList<String> tuitionInfo = tuition.getStudentTuitionInfo();
-    Iterator tuitionIterator = tuitionInfo.iterator();
+    ArrayList<TuitionModel> tuitionModels = tuition.getStudentInfoByModel();
+    Iterator<TuitionModel> tuitionIterator = tuitionModels.iterator();
+
     while (tuitionIterator.hasNext()) {
-      String line=(String)tuitionIterator.next();
-      line = line.replace("\\,", " ");
-      allInfo = allInfo + line + "\n";
+      TuitionModel line = (TuitionModel) tuitionIterator.next();
+      String firstNm = line.getStudFirstName().trim();
+      String lastNm = line.getStudLastName().trim();
+      String studNum = line.getStudSerialNum().trim();
+      String paidFee = line.getPaidFee().trim();
+      String paidYear = line.getPaidYear().trim();
+
+      allInfo = allInfo+" "+ firstNm + " " + lastNm + " " + studNum + " " + paidFee + " " + paidYear+ "\n";
     }
     return allInfo;
   }

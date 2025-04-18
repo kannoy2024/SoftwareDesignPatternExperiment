@@ -44,14 +44,11 @@ public class StudentBasicInfo {
 					String[] arr = line.split("\\,");
 					if (arr[0].trim().equals(name))
 						flag = true;
-					break;
 				}
 				line = reader.readLine();
 			}
 			reader.close();
 		} catch (FileNotFoundException exc) {
-			// exc.printStackTrace();
-			// System.exit(1);
 			System.err.println("Error: File 'StudentBasicInfo.txt' not found. Please check the file path.");
 			// return student; // 返回空列表
 		} catch (IOException exc) {
