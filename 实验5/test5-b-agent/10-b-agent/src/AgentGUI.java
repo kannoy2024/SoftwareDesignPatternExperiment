@@ -13,6 +13,7 @@ public class AgentGUI extends JFrame {
   public static final String CAESAR_CIPHER = "Caesar cipher ";
   public static final String FILE_WRITER = "File Writer";
   public static final String DATABASE_WRITER = "Database Writer";
+  public static final String PrintWriter = "Print Writer";
 
   private JTextField txtFirstName, txtLastName, txtCode;
   private JLabel lblFirstName, lblLastName, lblCode, lblEncryptMethod, lblLogMethod;
@@ -34,6 +35,7 @@ public class AgentGUI extends JFrame {
     cmbLogMethod = new JComboBox<String>();
     cmbLogMethod.addItem(FILE_WRITER);
     cmbLogMethod.addItem(DATABASE_WRITER);
+    cmbLogMethod.addItem(PrintWriter);
 
     lblFirstName = new JLabel("First Name:");
     lblLastName = new JLabel("Last Name");
@@ -140,6 +142,8 @@ class ButtonHandler implements ActionListener {
         writer = new DBWriter();
       if (logWay.compareTo(AgentGUI.FILE_WRITER) == 0)
         writer = new FileWriter();
+      if (logWay.compareTo(AgentGUI.PrintWriter) == 0)
+        writer = new PrintWriter();
 
       if (encryptWay.compareTo(AgentGUI.FOLD_ENCRYPTION) == 0)
         info = new EncryptedInfo1(writer);
@@ -150,7 +154,7 @@ class ButtonHandler implements ActionListener {
       if(encryptWay.compareTo(AgentGUI.CAESAR_CIPHER)==0)
       info = new EncryptedInfo3(writer);
 
-      System.out.println(firstNm + lastNm + code);
+      System.out.println("输入的名字是："+firstNm+ " "+"输入的姓氏是："+ lastNm +" "+"输入的编号是："+ code);
 
       info.log(lastNm, firstNm, code);
 
