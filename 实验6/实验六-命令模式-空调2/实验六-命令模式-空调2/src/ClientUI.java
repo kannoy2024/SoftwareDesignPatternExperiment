@@ -6,10 +6,10 @@ public class ClientUI extends JFrame {
     private JPanel btnPanel;
     private JPanel panel;
 
-    public static final String WINDOWOPEN = "Open Window";
-    public static final String WINDOWCLOSE = "Close Window";
-    public static final String FANON = "FanOn";
-    public static final String FANOFF = "FanOff";
+    public static final String WINDOW_OPEN = "Open Window";
+    public static final String WINDOW_CLOSE = "Close Window";
+    public static final String FAN_ON = "Fan On";
+    public static final String FAN_OFF = "Fan Off";
     public static final String EXIT = "Exit";
 
     public ClientUI() {
@@ -20,10 +20,10 @@ public class ClientUI extends JFrame {
 
     private void setUpChoicePanel() {
         // Create button objects
-        FanOnBtn btnFanOn = new FanOnBtn(FANON);
-        FanOffBtn btnFanOff = new FanOffBtn(FANOFF);
-        WindowOpenBtn btnWindowOpen = new WindowOpenBtn(WINDOWOPEN);
-        WindowCloseBtn btnWindowClose = new WindowCloseBtn(WINDOWCLOSE);
+        FanOnBtn btnFanOn = new FanOnBtn(FAN_ON);
+        FanOffBtn btnFanOff = new FanOffBtn(FAN_OFF);
+        WindowOpenBtn btnWindowOpen = new WindowOpenBtn(WINDOW_OPEN);
+        WindowCloseBtn btnWindowClose = new WindowCloseBtn(WINDOW_CLOSE);
 
         ExitButton btnExit = new ExitButton(EXIT);
         btnFanOn.setMnemonic(KeyEvent.VK_D);
