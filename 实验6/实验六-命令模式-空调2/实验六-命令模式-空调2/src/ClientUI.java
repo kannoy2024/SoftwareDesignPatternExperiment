@@ -10,6 +10,8 @@ public class ClientUI extends JFrame {
     public static final String WINDOW_CLOSE = "Close Window";
     public static final String FAN_ON = "Fan On";
     public static final String FAN_OFF = "Fan Off";
+    public static final String AIR_CONDITION_ON = "Air Condition On";
+    public static final String AIR_CONDITION_OFF = "Air Condition Off";
     public static final String EXIT = "Exit";
 
     public ClientUI() {
@@ -24,12 +26,16 @@ public class ClientUI extends JFrame {
         FanOffBtn btnFanOff = new FanOffBtn(FAN_OFF);
         WindowOpenBtn btnWindowOpen = new WindowOpenBtn(WINDOW_OPEN);
         WindowCloseBtn btnWindowClose = new WindowCloseBtn(WINDOW_CLOSE);
+        AirConditionOffBtn btnAirConditionOff = new AirConditionOffBtn(AIR_CONDITION_OFF);
+        AirConditionOnBtn btnAirConditionOn = new AirConditionOnBtn(AIR_CONDITION_ON);
 
         ExitButton btnExit = new ExitButton(EXIT);
         btnFanOn.setMnemonic(KeyEvent.VK_D);
         btnFanOff.setMnemonic(KeyEvent.VK_D);
         btnWindowOpen.setMnemonic(KeyEvent.VK_D);
         btnWindowClose.setMnemonic(KeyEvent.VK_D);
+        btnAirConditionOff.setMnemonic(KeyEvent.VK_D);
+        btnAirConditionOn.setMnemonic(KeyEvent.VK_D);
         btnExit.setMnemonic(KeyEvent.VK_X);
 
         panel = new JPanel();
@@ -38,6 +44,8 @@ public class ClientUI extends JFrame {
         btnFanOff.addActionListener(bh);
         btnWindowOpen.addActionListener(bh);
         btnWindowClose.addActionListener(bh);
+        btnAirConditionOff.addActionListener(bh);
+        btnAirConditionOn.addActionListener(bh);
         btnExit.addActionListener(bh);
 
         btnPanel = new JPanel();
@@ -46,6 +54,8 @@ public class ClientUI extends JFrame {
         btnPanel.add(btnFanOff);
         btnPanel.add(btnWindowOpen);
         btnPanel.add(btnWindowClose);
+        btnPanel.add(btnAirConditionOff);
+        btnPanel.add(btnAirConditionOn);
         btnPanel.add(btnExit);
     }
 
