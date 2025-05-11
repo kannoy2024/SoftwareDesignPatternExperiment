@@ -13,6 +13,7 @@ public class TestMediator{
 	  	 new AirlineGUI(mediator);
 		 new HotelGUI(mediator);
 	  	 new TourGUI(mediator);
+		 new TouriststoreGUI(mediator);
 	  }
 	  catch (Exception ee){
 	  	 ee. printStackTrace();

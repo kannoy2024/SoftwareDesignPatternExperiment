@@ -6,7 +6,7 @@ import javax.swing.border.Border;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class HotelGUI extends JFrame {
+public class TouriststoreGUI  extends JFrame {
    private JSplitPane bigSplitPane;
    private JScrollPane showInfoPane;
    private JPanel btnPanel;
@@ -18,9 +18,10 @@ public class HotelGUI extends JFrame {
    private String cusID;
    private String cusNation;
    private JTextArea display;
+
    private Dimension size = new Dimension(600, 210);
    private static int divider = 370;
-   public static final String HOTEL = "hotel";
+   public static final String TouriststoreGUI  = "TouriststoreGUI ";
    public static final String SUBMIT = "Submit";
    public static final String EXIT = "Exit";
 
@@ -28,8 +29,8 @@ public class HotelGUI extends JFrame {
    private ArrayList<String> cusNames;
    private ArrayList<String> candidateCusNames;
 
-   public HotelGUI(BusinessMediator BusinessMediator) {
-      super("Mediator Pattern- Hotel ");
+   public TouriststoreGUI (BusinessMediator BusinessMediator) {
+      super("Mediator Pattern- Touriststore  ");
       bMediator = BusinessMediator;
       setUpChoicePanel();
       setUpScrollPanes();
@@ -173,21 +174,26 @@ public class HotelGUI extends JFrame {
       candidateCusNames.add(cus);
    }
 
+   public void displayInfoToScreen(String txt) {
+      display.append(txt);
+   }
+
    public void writeReservedCusToDB() {
       Iterator<String> e = cusNames.iterator();
       while (e.hasNext()) {
-         String s = (String) e.next();
-         System.out.println("Writing to DB (reserved): " + s);
+          String s = (String) e.next();
+          System.out.println("Writing to DB (reserved): " + s);
          // try to write data to DB
       }
    }
-   // public void writeCandidateCusToDB(){
-   // String s;
-   // Iterator<String> e = cusNames.iterator();
-   // while (e.hasNext()){
-   // s = (String) e.next();
-   // //try to write data to DB
-   // }
+
+   // public void writeCandidateCusToDB() {
+   //    String s;
+   //    Iterator e = cusNames.iterator();
+   //    while (e.hasNext()) {
+   //       s = (String) e.next();
+   //       // try to write data to DB
+   //    }
    // }
 
    class ButtonListener implements ActionListener {
@@ -200,27 +206,24 @@ public class HotelGUI extends JFrame {
             setCusName();
             setCusID();
             setCusNation();
+
             String nm = getCusName();
             String id = getCusID();
             String na = getCusNation();
 
-            displayInfoToScreen("\nHotel reserved:\n" + nm);
+            displayInfoToScreen("\n Tour reserved:\n" + nm);
             displayInfoToScreen("\n" + id);
             displayInfoToScreen("\n" + na);
 
-            String hotelCus = "\n\nCustomer check in hotel:";
+            String hotelCus = "\n \nCustomer reserved A Tour line: ";
             String cusInfo = hotelCus + "\n Name: " + nm + "\n ID: " + id + "\n Nationality: " + na;
-
             addCustomer(cusInfo);
-            bMediator.addAllCandidateCus(HOTEL, cusInfo);
-            bMediator.updateALlGuis(HOTEL, cusInfo);
+            bMediator.addAllCandidateCus(TouriststoreGUI , cusInfo);
+            bMediator.updateALlGuis(TouriststoreGUI , cusInfo);
          }
       }
    }
 
-   public void displayInfoToScreen(String txt) {
-      display.append(txt);
-   }
 }
 
 /*
