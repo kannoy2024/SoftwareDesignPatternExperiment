@@ -1,32 +1,32 @@
 package mvc.minimvcconsoledataapp;
 
 public class StuController {
-	private StudentSerivce serivce;
+	private StudentService service;
 	private StudentView view;
-	public StuController(StudentSerivce serivce, StudentView view) {
+	public StuController(StudentService service, StudentView view) {
 		super();
-		this.serivce = serivce;
+		this.service = service;
 		this.view = view;
 	}
 	public void updateView() {
-		view.displayAllDetail(serivce.getAllStudentInfo());
+		view.displayAllDetail(service.getAllStudentInfo());
 	}
 	
 	public void createTable() {
-		serivce.createTable();
+		service.createTable();
 	}
 	
 	public void deleteStudent() {
-		serivce.deleteFromStudent(view.getDeleteStudentInfo());
+		service.deleteFromStudent(view.getDeleteStudentInfo());
 	}
 	
 	public void insertStudent() {
-		serivce.insertStudent(view.getNewStudent());
+		service.insertStudent(view.getNewStudent());
 		
 	}
 	
 	public void updateStudent()
 	{
-		serivce.updateStudentInfo(view.getUpdateStudentInfo());
+		service.updateStudentInfo(view.getUpdateStudentInfo());
 	}
 }

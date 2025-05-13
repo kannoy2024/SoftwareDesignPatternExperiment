@@ -4,9 +4,9 @@ public class mvcDemo {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		StudentSerivce serivce=new StudentSerivce();
+		StudentService service=new StudentService();
 		StudentView view=new StudentView();
-		StuController stController=new StuController(serivce, view);
+		StuController stController=new StuController(service, view);
 		stController.createTable();
 		stController.insertStudent();
 		stController.updateView();
