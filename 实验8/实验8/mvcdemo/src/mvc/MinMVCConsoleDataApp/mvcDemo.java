@@ -1,9 +1,8 @@
-package mvc.minimvcconsoledataapp;
+package mvc.MinMVCConsoleDataApp;
 
 public class mvcDemo {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		StudentService service=new StudentService();
 		StudentView view=new StudentView();
 		StuController stController=new StuController(service, view);

@@ -1,4 +1,4 @@
-package mvc.minimvc;
+package mvc.MinMVC;
 
 public class SimpleController {
 	private SImpleModel model;

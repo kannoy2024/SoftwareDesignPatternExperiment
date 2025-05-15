@@ -1,4 +1,4 @@
-package mvc.minimvcconsoledataapp;
+package mvc.MinMVCConsoleDataApp;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class StudentService {
 	private DBApplication db;
 	public StudentService() {
-		db=new DBApplication("com.mysql.jdbc.Driver",
-				"jdbc:mysql://localhost:3306/student");
+db = new DBApplication("com.mysql.cj.jdbc.Driver", 
+    "jdbc:mysql://localhost:3306/student");
 	}
 	 public ArrayList<Student> getAllStudentInfo() {
         ArrayList<Student> students = new ArrayList<>();

@@ -1,4 +1,4 @@
-package mvc.minimvcconsoledataapp;
+package mvc.MinMVCConsoleDataApp;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,19 +13,26 @@ public class DBApplication {
 	private String databaseDriver;
 	private String databaseConnStr;
 
-	public DBApplication(String dBDriver, String dBConnStr) {
-		System.out.println("sdfsdfsdfsd"+dBConnStr);
-		System.out.println(dBDriver);
-		databaseDriver = dBDriver;
-		databaseConnStr = dBConnStr;
-		try {
-			Class.forName(databaseDriver);
-			conn = DriverManager.getConnection(databaseConnStr);
-		} catch (java.lang.ClassNotFoundException | SQLException e) {
-			System.err.println("加载驱动器有错误:" + e.getMessage());
-			System.out.print("执行插入有错误:" + e.getMessage()); // 输出到客户端
-		}
-	}
+public DBApplication(String dBDriver, String dBConnStr) {
+    System.out.println("Connecting to: " + dBConnStr);
+    System.out.println("Using driver: " + dBDriver);
+
+    databaseDriver = dBDriver;
+    databaseConnStr = dBConnStr;
+
+    try {
+        // 加载驱动
+        Class.forName(databaseDriver);
+
+        // 增加用户名和密码参数
+        conn = DriverManager.getConnection(databaseConnStr, "root", "123456");
+
+    } catch (ClassNotFoundException e) {
+        System.err.println("加载驱动器有错误:" + e.getMessage());
+    } catch (SQLException e) {
+        System.err.println("数据库连接失败:" + e.getMessage());
+    }
+}
 
 	public int executeInsert(String sql) {
 		int num = 0;
@@ -86,7 +93,6 @@ public class DBApplication {
 
 			statement1.executeUpdate(sql);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

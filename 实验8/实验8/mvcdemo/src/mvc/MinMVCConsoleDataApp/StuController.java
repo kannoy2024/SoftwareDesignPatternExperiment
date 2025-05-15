@@ -1,4 +1,4 @@
-package mvc.minimvcconsoledataapp;
+package mvc.MinMVCConsoleDataApp;
 
 public class StuController {
 	private StudentService service;

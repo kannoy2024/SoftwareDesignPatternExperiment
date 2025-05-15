@@ -1,4 +1,4 @@
-package mvc.minimvcconsoledataapp;
+package mvc.MinMVCConsoleDataApp;
 
 import java.util.ArrayList;
 import java.util.Iterator;

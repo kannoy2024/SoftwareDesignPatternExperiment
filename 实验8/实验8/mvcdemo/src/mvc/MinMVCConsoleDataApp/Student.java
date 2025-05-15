@@ -1,4 +1,4 @@
-package mvc.minimvcconsoledataapp;
+package mvc.MinMVCConsoleDataApp;
 
 public class Student {
 
@@ -23,7 +23,6 @@ public class Student {
 
 	public Student() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public String getId() {
 		return id;

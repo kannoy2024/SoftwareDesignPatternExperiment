@@ -1,4 +1,4 @@
-package mvc.minimvc;
+package mvc.MinMVC;
 
 public class SImpleModel {
 	public void insertDbData(String s) {
