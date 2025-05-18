@@ -6,7 +6,14 @@ public class Course {
     private int courseTime;//时间
     private int courseWeek;//周数
 
-
+    public Course(String courseName, String courseId, String courseTeacher, int courseCredit, int courseTime, int courseWeek) {
+        this.courseName = courseName;
+        this.courseId = courseId;
+        this.courseTeacher = courseTeacher;
+        this.courseCredit = courseCredit;
+        this.courseTime = courseTime;
+        this.courseWeek = courseWeek;
+    }
 
     public String getCourseName() {
         return courseName;
