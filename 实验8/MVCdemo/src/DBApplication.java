@@ -5,49 +5,49 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DBApplication {
-    public static Connection conn = null;
-    public ResultSet result = null;
+	public static Connection conn = null;
+	public ResultSet result = null;
 
-    private String databaseDriver;
-    private String databaseConnStr;
+	private String databaseDriver;
+	private String databaseConnStr;
 
-    public DBApplication(String dBDriver, String dBConnStr) {
-    System.out.println("Connecting to: " + dBConnStr);
-    System.out.println("Using driver: " + dBDriver);
+	public DBApplication(String dBDriver, String dBConnStr) {
+		System.out.println("Connecting to: " + dBConnStr);
+		System.out.println("Using driver: " + dBDriver);
 
-    databaseDriver = dBDriver;
-    databaseConnStr = dBConnStr;
+		databaseDriver = dBDriver;
+		databaseConnStr = dBConnStr;
 
-        try {
-        // 加载驱动
-        Class.forName(databaseDriver);
+		try {
+			// 加载驱动
+			Class.forName(databaseDriver);
 
-        // 增加用户名和密码参数
-        conn = DriverManager.getConnection(databaseConnStr, "root", "123456");
+			// 增加用户名和密码参数
+			conn = DriverManager.getConnection(databaseConnStr, "root", "123456");
 
-    } catch (ClassNotFoundException e) {
-        System.err.println("加载驱动器有错误:" + e.getMessage());
-    } catch (SQLException e) {
-        System.err.println("数据库连接失败:" + e.getMessage());
-    }
-}
-
+		} catch (ClassNotFoundException e) {
+			System.err.println("加载驱动器有错误:" + e.getMessage());
+		} catch (SQLException e) {
+			System.err.println("数据库连接失败:" + e.getMessage());
+		}
+	}
 
 	public int executeInsert(String sql) {
 		int num = 0;
 		try {
 			Statement stmt = conn.createStatement();
 			stmt.setQueryTimeout(30);
-			System.out.println("**********"+sql + "**********");
+			System.out.println("**********" + sql + "**********");
 			num = stmt.executeUpdate(sql);
 		} catch (SQLException ex) {
 			System.err.println("执行插入有错误:" + ex.getMessage());
 			System.out.print("执行插入有错误:" + ex.getMessage()); // 输出到客户端
 		}
-    //    closeDataBase();
+		// closeDataBase();
 		return num;
 	}
-public ResultSet executeQuery(String sql) {
+
+	public ResultSet executeQuery(String sql) {
 		result = null;
 		try {
 			Statement stmt = conn.createStatement();
@@ -70,7 +70,7 @@ public ResultSet executeQuery(String sql) {
 			System.out.print("执行删除有错误:" + ex.getMessage()); // 输出到客户端
 		}
 
-//       closeDataBase();
+		// closeDataBase();
 		return num;
 	}
 
@@ -79,14 +79,13 @@ public ResultSet executeQuery(String sql) {
 		try {
 			statement1 = conn.createStatement();
 			statement1.setQueryTimeout(30); // set timeout to 30 sec.
-			String sql="CREATE TABLE course ( "
+			String sql = "CREATE TABLE course ( "
 					+ "courseId varchar(20) NOT NULL, "
 					+ "courseName varchar(100) NOT NULL,"
 					+ "courseTeacher varchar(10) NOT NULL,"
 					+ "courseCredit int(11) NOT NULL,"
 					+ "courseTime int(11) NOT NULL,"
-					+ "courseWeek int(11) NOT NULL,";
-
+					+ "courseWeek int(11) NOT NULL)";
 			statement1.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
