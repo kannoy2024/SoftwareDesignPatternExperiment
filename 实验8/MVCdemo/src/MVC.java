@@ -4,7 +4,7 @@ public class MVC {
         CourseView courseView = new CourseView();
         CourseController courseController = new CourseController(courseService, courseView);
         courseController.createTable();
-        courseController.insertCourse();
+        // courseController.insertCourse();
         courseController.updateView();
         courseController.updateCourse();
         courseController.updateView();

@@ -12,7 +12,7 @@ public class CourseView {
         course.setCourseTime(1);
         course.setCourseWeek(1);
         return course;
-    };
+    }
 
     public void displayAllCourseInfo(ArrayList<Course> courseList) {
         Iterator<Course> iterator = courseList.iterator();

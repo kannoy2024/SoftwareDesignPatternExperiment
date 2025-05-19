@@ -24,7 +24,7 @@ public class DBApplication {
 
 			// 增加用户名和密码参数
 			conn = DriverManager.getConnection(databaseConnStr, "root", "123456");
-
+			System.out.println("	数据库连接成功!");
 		} catch (ClassNotFoundException e) {
 			System.err.println("加载驱动器有错误:" + e.getMessage());
 		} catch (SQLException e) {
@@ -39,6 +39,7 @@ public class DBApplication {
 			stmt.setQueryTimeout(30);
 			System.out.println("**********" + sql + "**********");
 			num = stmt.executeUpdate(sql);
+			System.out.println("插入执行成功");
 		} catch (SQLException ex) {
 			System.err.println("执行插入有错误:" + ex.getMessage());
 			System.out.print("执行插入有错误:" + ex.getMessage()); // 输出到客户端
@@ -51,7 +52,9 @@ public class DBApplication {
 		result = null;
 		try {
 			Statement stmt = conn.createStatement();
+			System.out.println("**********" + sql + "**********");
 			result = stmt.executeQuery(sql);
+			System.out.println("查询执行成功");
 		} catch (SQLException ex) {
 			System.err.println("执行查询有错误:" + ex.getMessage() + sql);
 			System.out.print("执行查询有错误:" + ex.getMessage()); // 输出到客户端
@@ -64,7 +67,9 @@ public class DBApplication {
 		int num = 0;
 		try {
 			Statement stmt = conn.createStatement();
+			System.out.println("**********" + sql + "**********");
 			num = stmt.executeUpdate(sql);
+			System.out.println("删除执行成功");
 		} catch (SQLException ex) {
 			System.err.println("执行删除有错误:" + ex.getMessage());
 			System.out.print("执行删除有错误:" + ex.getMessage()); // 输出到客户端
@@ -79,14 +84,16 @@ public class DBApplication {
 		try {
 			statement1 = conn.createStatement();
 			statement1.setQueryTimeout(30); // set timeout to 30 sec.
-			String sql = "CREATE TABLE course ( "
+			String sql = "CREATE TABLE if not exists course ( "
 					+ "courseId varchar(20) NOT NULL, "
 					+ "courseName varchar(100) NOT NULL,"
 					+ "courseTeacher varchar(10) NOT NULL,"
 					+ "courseCredit int(11) NOT NULL,"
 					+ "courseTime int(11) NOT NULL,"
 					+ "courseWeek int(11) NOT NULL)";
+
 			statement1.executeUpdate(sql);
+			System.out.println("**********" + sql + "**********");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
