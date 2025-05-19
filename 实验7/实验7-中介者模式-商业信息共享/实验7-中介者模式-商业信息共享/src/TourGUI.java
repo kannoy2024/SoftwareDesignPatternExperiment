@@ -181,19 +181,19 @@ public class TourGUI extends JFrame {
    public void writeReservedCusToDB() {
       Iterator<String> e = cusNames.iterator();
       while (e.hasNext()) {
-          String s = (String) e.next();
-          System.out.println("Writing to DB (reserved): " + s);
+         String s = (String) e.next();
+         System.out.println("Writing to DB (reserved): " + s);
          // try to write data to DB
       }
    }
 
    // public void writeCandidateCusToDB() {
-   //    String s;
-   //    Iterator e = cusNames.iterator();
-   //    while (e.hasNext()) {
-   //       s = (String) e.next();
-   //       // try to write data to DB
-   //    }
+   // String s;
+   // Iterator e = cusNames.iterator();
+   // while (e.hasNext()) {
+   // s = (String) e.next();
+   // // try to write data to DB
+   // }
    // }
 
    class ButtonListener implements ActionListener {

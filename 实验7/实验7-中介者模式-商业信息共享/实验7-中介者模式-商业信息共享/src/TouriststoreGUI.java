@@ -178,14 +178,14 @@ public class TouriststoreGUI  extends JFrame {
       display.append(txt);
    }
 
-   public void writeReservedCusToDB() {
-      Iterator<String> e = cusNames.iterator();
-      while (e.hasNext()) {
-          String s = (String) e.next();
-          System.out.println("Writing to DB (reserved): " + s);
-         // try to write data to DB
-      }
-   }
+   // public void writeReservedCusToDB() {
+   //    Iterator<String> e = cusNames.iterator();
+   //    while (e.hasNext()) {
+   //        String s = (String) e.next();
+   //        System.out.println("Writing to DB (reserved): " + s);
+   //       // try to write data to DB
+   //    }
+   // }
 
    // public void writeCandidateCusToDB() {
    //    String s;
